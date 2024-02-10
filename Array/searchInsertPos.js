@@ -28,3 +28,26 @@ const searchInsert = (nums, target) => {
 }
 let expResult = searchInsert([1, 3, 5, 6, 7], 3);
 console.log("Index of target element is :- ", expResult);
+
+
+// Approach - 2
+const searchInsertPosition = (nums, target) => {
+    let left = 0;
+    let right = nums.length - 1;
+
+    while (left <= right) {
+        let mid = Math.floor((left + right) / 2);
+
+        if (nums[mid] === target) {
+            return mid;
+        } else if (nums[mid] < target) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+
+    return left;
+}
+console.log(searchInsertPosition([1, 3, 5, 6], 5));
+
